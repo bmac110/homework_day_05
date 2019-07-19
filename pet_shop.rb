@@ -19,4 +19,49 @@ def increase_pets_sold(shop, sold)
   return shop[:admin][:pets_sold] += sold
 end
 
-def stock_count()
+def stock_count(shop)
+  return shop[:pets].size
+end
+
+def pets_by_breed(shop, breed)
+  types = shop[:pets]
+  breed_array = []
+  for type in types
+    if type[:breed] == breed
+      breed_array.push(type)
+    end
+  end
+  return breed_array
+end
+
+def find_pet_by_name(shop, name)
+  for pets in shop[:pets]
+    if pets[:name] == name
+      return pets
+    end
+  end
+  return nil
+end
+
+def remove_pet_by_name(shop, name)
+  types = shop[:pets]
+  for type in types
+    if type[:name] == name
+      types.delete(type)
+    end
+  end
+end
+
+def add_pet_to_stock(shop, new_pet)
+  return shop[:pets] << new_pet
+end
+
+def customer_cash(customers)
+  return customers[:cash]
+end
+
+def remove_customer_cash(customer, amount)
+  return customer[:cash] -= amount
+end
+
+def customer_pet_count(customer)
