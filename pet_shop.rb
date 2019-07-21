@@ -82,18 +82,16 @@ def customer_can_afford_pet(customer, new_pet)
 end
 
 def sell_pet_to_customer(shop, pet, customer)
-  # return customer[:pets] << pet
-  # return customer[:pets].size
-  # return shop[:admin][:pets_sold] += 1
-  # return shop[:admin][:pets_sold]
-  # return customer[:cash] -= shop[:pets][3][:price]
-  # return customer[:cash]
-  # return shop[:admin][:total_cash] += shop[:pets][3][:price]
-  # return shop[:admin][:total_cash]
+  if pet == nil
+    return "No such pet in shop"
+  elsif
+    customer_can_afford_pet(customer, pet) == false
+    return "Not enough cash"
+  else
     add_pet_to_customer(customer, pet)
     shop[:admin][:pets_sold] += 1
     remove_customer_cash(customer, pet[:price])
     add_or_remove_cash(shop, pet[:price])
-
+  end
 
 end
